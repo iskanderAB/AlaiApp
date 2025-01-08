@@ -1,118 +1,61 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+// App.tsx
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import LottieView from 'lottie-react-native';
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+export default function App() {
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    <View style={styles.container}>
+      <LottieView source={require('./src/img/Animation3.json')}
+      autoPlay loop
+      style={styles.img1}/>
+      <Text style={styles.text}>منصة البلدية الرقمية <Text style={styles.boldText}>(Municipalité El Alia)</Text> هي منصة الكترونية أسست من أجل تسهيل التواصل الرقمي بين البلدية و المواطنين</Text>
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.output}>Suivant</Text>
+      </TouchableOpacity>
     </View>
   );
 }
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 10,
+    backgroundColor: '#f5f5f5',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  output: {
+    margin: 10,
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#f5f5f5',
+    textAlign: 'center',
+    textAlignVertical: 'center',
   },
-  sectionDescription: {
-    marginTop: 8,
+  text: {
     fontSize: 18,
-    fontWeight: '400',
+    fontFamily: 'arial',
+    color: 'black',
+    textAlign: 'center',
+    marginBottom: 100,
   },
-  highlight: {
-    fontWeight: '700',
+  img1: {
+     width: 350,
+     height: 350,
+     marginTop: -50,
+     marginBottom: 50,
+  },
+  boldText: {
+    fontWeight: 'bold',
+  },
+  button: {
+    backgroundColor: '#10B982',
+    borderRadius: 20,
+    width: 300,
+    height: 55,
+    marginTop: 50,
+    alignItems: 'center',
   },
 });
-
-export default App;
